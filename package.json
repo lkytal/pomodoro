@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "publisher": "lkytal",
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.1.0"
     },
     "categories": [
         "Other"
@@ -14,6 +14,7 @@
         "*"
     ],
     "main": "./out/src/extension",
+    "icon": "icon.png",
     "contributes": {
         "commands": [
             {
@@ -38,7 +39,7 @@
                     "default": 25,
                     "description": "Time of work, in minutes."
                 },
-                "pomodoro.puaseTime": {
+                "pomodoro.pauseTime": {
                     "type": "number",
                     "default": 5,
                     "description": "Time of pause, in minutes"

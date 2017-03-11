@@ -81,7 +81,7 @@ class PomodoroManager {
 
             // show message if user needs a longer break
             if (this.pomodori.length > 1) {
-                window.showInformationMessage('Well done ! You should now take a longer break.');
+                window.showInformationMessage('Well done! You should now take a longer break.');
             }
 
             return;
