@@ -1,8 +1,8 @@
 enum PomodoroStatus {
 	None,
 	Work,
-	Pause,
-	Wait,
+	Rest,
+	Paused,
 	Done
 }
 

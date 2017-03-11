@@ -2,7 +2,7 @@
     "name": "pomodoro",
     "displayName": "Pomodoro",
     "description": "Pomodoro for vscode",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "lkytal",
     "engines": {
         "vscode": "^1.5.0"
@@ -28,7 +28,23 @@
                 "command": "extension.resetPomodoro",
                 "title": "Reset Pomodoro"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Pomodoro Configuration",
+            "properties": {
+                "pomodoro.workTime": {
+                    "type": "number",
+                    "default": 25,
+                    "description": "Time of work, in minutes."
+                },
+                "pomodoro.puaseTime": {
+                    "type": "number",
+                    "default": 5,
+                    "description": "Time of pause, in minutes"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
@@ -38,9 +54,9 @@
     },
     "devDependencies": {
         "typescript": "^2.2.1",
-        "vscode": "^1.0.5",
+        "vscode": "^1.1.0",
         "mocha": "^3.2.0",
-        "@types/node": "^7.0.5",
-        "@types/mocha": "^2.2.39"
+        "@types/node": "^7.0.8",
+        "@types/mocha": "^2.2.40"
     }
 }

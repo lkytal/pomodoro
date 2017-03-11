@@ -21,7 +21,7 @@ class Pomodoro {
     // events
     public ontick: { (): void };
 
-    constructor(public workTime: number = 25 * 60, public pauseTime: number = 5 * 60) {
+    constructor(public workTime: number = 25, public pauseTime: number = 5) {
         this._timer = new Timer();
         this.status = PomodoroStatus.None;
     }
@@ -36,15 +36,15 @@ class Pomodoro {
         if (status == PomodoroStatus.Work) {
             this.timer.reset(this.workTime);
         }
-        if (status == PomodoroStatus.Pause) {
+        if (status == PomodoroStatus.Rest) {
             this.timer.reset(this.pauseTime);
         }
     }
 
     // public methods
     public start(status: PomodoroStatus = PomodoroStatus.Work) {
-        if (status == PomodoroStatus.Work || status == PomodoroStatus.Pause) {
-            if (this.status != PomodoroStatus.Wait)
+        if (status == PomodoroStatus.Work || status == PomodoroStatus.Rest) {
+            if (this.status != PomodoroStatus.Paused)
                 this.resetTimer(status);
 
             this.status = status;
@@ -54,9 +54,9 @@ class Pomodoro {
                 if (this.timer.currentTime <= 0) {
                     if (this.status == PomodoroStatus.Work) {
                         window.showInformationMessage('Work done! Take a break.');
-                        this.start(PomodoroStatus.Pause);
+                        this.start(PomodoroStatus.Rest);
                     }
-                    else if (this.status == PomodoroStatus.Pause) {
+                    else if (this.status == PomodoroStatus.Rest) {
                         window.showInformationMessage('Pause is over.');
                         this.done();
                     }
@@ -74,7 +74,7 @@ class Pomodoro {
 
     public pause() {
         this.stop();
-        this.status = PomodoroStatus.Wait;
+        this.status = PomodoroStatus.Paused;
     }
 
     public reset() {
