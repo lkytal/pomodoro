@@ -1,6 +1,6 @@
-# Pomodoro for VS Code
+# Pomodoro Timer for VS Code
 
-> Adapted form [Pomodoro-code](https://marketplace.visualstudio.com/items?itemName=odonno.pomodoro-code)
+> Based on the [Pomodoro-code](https://marketplace.visualstudio.com/items?itemName=odonno.pomodoro-code)
 
 A simple pomodoro timer shows in statusbar.
 
@@ -12,9 +12,17 @@ After started:
 
 ![Preview](button.png)
 
->Install on vs market [Pomodoro](https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro)
+>Install [Pomodoro](https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro) via vs market
+
+## My other extesion
+
+### [FlatUI](https://marketplace.visualstudio.com/items?itemName=lkytal.FlatUI)
+### [Quick Task](https://marketplace.visualstudio.com/items?itemName=lkytal.quicktask)
 
 ## Release Notes
+
+## [1.0.1] - 2017-03-15
+- Tiny fixes.
 
 ## [1.0.0] - 2017-03-11
 - First release.

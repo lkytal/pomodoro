@@ -2,7 +2,6 @@ import { window, StatusBarAlignment, StatusBarItem } from 'vscode';
 
 import Pomodoro = require('./pomodoro');
 import PomodoroStatus = require('./pomodoroStatus');
-import Timer = require('./timer');
 
 class PomodoroManager {
     // logic properties
@@ -144,9 +143,6 @@ class PomodoroManager {
     public dispose() {
         // stop current Pomodoro
         this.currentPomodoro.dispose();
-
-        // reset Pomodori
-        this.reset();
 
         // reset UI
         this._statusBarText.dispose();

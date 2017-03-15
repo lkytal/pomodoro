@@ -1,8 +1,8 @@
 {
     "name": "pomodoro",
-    "displayName": "Pomodoro",
-    "description": "Pomodoro for vscode",
-    "version": "1.0.0",
+    "displayName": "Pomodoro Timer",
+    "description": "Pomodoro Timer for vscode",
+    "version": "1.0.1",
     "publisher": "lkytal",
     "engines": {
         "vscode": "^1.1.0"

@@ -1,4 +1,4 @@
-import {window} from 'vscode';
+import { window } from 'vscode';
 
 import PomodoroStatus = require('./pomodoroStatus');
 import Timer = require('./timer');

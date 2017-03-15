@@ -19,7 +19,8 @@ class Timer {
 				this.tick();
 				callback();
 			}, this.interval);
-		} else {
+		}
+		else {
 			console.error('A timer instance is already running...');
 		}
 	}
