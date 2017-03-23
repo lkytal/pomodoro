@@ -137,7 +137,7 @@ class PomodoroManager {
         this._pomodoroIndex = 0;
         this.pomodori = [];
 
-        this.pomodori.push(new Pomodoro(this.workTime, this.pauseTime));
+        this.pomodori.push(new Pomodoro(this.workTime * 60, this.pauseTime * 60));
     }
 
     public dispose() {

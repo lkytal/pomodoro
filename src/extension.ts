@@ -6,11 +6,8 @@ import PomodoroManager = require('./pomodoroManager');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
     let config = vscode.workspace.getConfiguration('pomodoro');
-    let pomodoroManager = new PomodoroManager(config.workTime * 60, config.pauseTime * 60);
+    let pomodoroManager = new PomodoroManager(config.workTime, config.pauseTime);
 
     // list of commands
     let startDisposable = vscode.commands.registerCommand('extension.startPomodoro', () => {

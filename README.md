@@ -16,10 +16,15 @@ After started:
 
 ## My other extesion
 
-### [FlatUI](https://marketplace.visualstudio.com/items?itemName=lkytal.FlatUI)
-### [Quick Task](https://marketplace.visualstudio.com/items?itemName=lkytal.quicktask)
+- ### [FlatUI](https://marketplace.visualstudio.com/items?itemName=lkytal.FlatUI)
+- ### [Quick Task](https://marketplace.visualstudio.com/items?itemName=lkytal.quicktask)
+- ### [Coffee Lint](https://marketplace.visualstudio.com/items?itemName=lkytal.coffeelinter)
+- ### [Translator Plus](https://marketplace.visualstudio.com/items?itemName=lkytal.translatorplus)
 
 ## Release Notes
+
+## [1.0.2] - 2017-03-23
+- Ensure time in integer.
 
 ## [1.0.1] - 2017-03-15
 - Tiny fixes.

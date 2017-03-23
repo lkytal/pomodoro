@@ -21,7 +21,10 @@ class Pomodoro {
     // events
     public ontick: { (): void };
 
-    constructor(public workTime: number = 25, public pauseTime: number = 5) {
+    constructor(public workTime: number = 25 * 60, public pauseTime: number = 5 * 60) {
+        this.workTime = Math.floor(this.workTime);
+        this.pauseTime = Math.floor(this.pauseTime);
+
         this._timer = new Timer();
         this.status = PomodoroStatus.None;
     }
