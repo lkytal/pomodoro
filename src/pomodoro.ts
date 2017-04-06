@@ -19,7 +19,7 @@ class Pomodoro {
     }
 
     // events
-    public ontick: { (): void };
+    public onTick: { (): void };
 
     constructor(public workTime: number = 25 * 60, public pauseTime: number = 5 * 60) {
         this.workTime = Math.floor(this.workTime);
@@ -65,8 +65,8 @@ class Pomodoro {
                     }
                 }
 
-                if (this.ontick) {
-                    this.ontick();
+                if (this.onTick) {
+                    this.onTick();
                 }
             });
         }

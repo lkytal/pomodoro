@@ -90,7 +90,7 @@ class PomodoroManager {
         let minutes = (this.currentPomodoro.timer.currentTime - seconds) / 60;
 
         // update status bar (text)
-        let timerPart = ((minutes < 10) ? '0' : '') + minutes + ':' + ((seconds < 10) ? '0' : '') + seconds
+        let timerPart = ((minutes < 10) ? '0' : '') + minutes + ':' + ((seconds < 10) ? '0' : '') + seconds;
 
         let pomodoroNumberPart = '';
         if (this.pomodori.length > 1) {
@@ -120,7 +120,7 @@ class PomodoroManager {
         }
 
         this.currentPomodoro.start();
-        this.currentPomodoro.ontick = () => {
+        this.currentPomodoro.onTick = () => {
             this.update();
             this.draw();
         };
