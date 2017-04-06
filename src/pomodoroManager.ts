@@ -86,11 +86,11 @@ class PomodoroManager {
             return;
         }
 
-        let seconds = this.currentPomodoro.timer.currentTime % 60;
-        let minutes = (this.currentPomodoro.timer.currentTime - seconds) / 60;
+        const seconds = this.currentPomodoro.timer.currentTime % 60;
+        const minutes = (this.currentPomodoro.timer.currentTime - seconds) / 60;
 
         // update status bar (text)
-        let timerPart = ((minutes < 10) ? '0' : '') + minutes + ':' + ((seconds < 10) ? '0' : '') + seconds;
+        const timerPart = ((minutes < 10) ? '0' : '') + minutes + ':' + ((seconds < 10) ? '0' : '') + seconds;
 
         let pomodoroNumberPart = '';
         if (this.pomodori.length > 1) {
