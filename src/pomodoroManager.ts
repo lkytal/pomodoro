@@ -14,14 +14,14 @@ class PomodoroManager {
 
 	public get currentState() {
 		switch (this.currentPomodoro.status) {
-		case PomodoroStatus.Work:
-			return ' - work';
-		case PomodoroStatus.Rest:
-			return ' - rest';
-		case PomodoroStatus.Paused:
-			return ' - paused';
-		default:
-			return '';
+			case PomodoroStatus.Work:
+				return ' - work';
+			case PomodoroStatus.Rest:
+				return ' - rest';
+			case PomodoroStatus.Paused:
+				return ' - paused';
+			default:
+				return '';
 		}
 	}
 
