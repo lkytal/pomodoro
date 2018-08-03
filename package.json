@@ -44,6 +44,11 @@
 					"type": "number",
 					"default": 5,
 					"description": "Time of pause, in minutes"
+				},
+				"pomodoro.repeat": {
+					"type": "number",
+					"default": 4,
+					"description": "Number of repeat before long break"
 				}
 			}
 		}
@@ -64,10 +69,10 @@
 		"test": "node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"@types/mocha": "^2.2.46",
-		"@types/node": "^9.3.0",
-		"mocha": "^4.1.0",
-		"typescript": "^2.6.2",
-		"vscode": "^1.1.10"
+		"@types/mocha": "^5.2.5",
+		"@types/node": "^10.5.5",
+		"mocha": "^5.2.0",
+		"typescript": "^3.0.1",
+		"vscode": "^1.1.18"
 	}
 }

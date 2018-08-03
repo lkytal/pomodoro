@@ -3,7 +3,8 @@ enum PomodoroStatus {
 	Work,
 	Rest,
 	Paused,
+	Break,
 	Done
 }
 
-export = PomodoroStatus
+export = PomodoroStatus;

@@ -1,7 +1,7 @@
-import { window, StatusBarAlignment, StatusBarItem } from 'vscode';
+import { StatusBarAlignment, StatusBarItem, window } from "vscode";
 
-import Pomodoro = require('./pomodoro');
-import PomodoroStatus = require('./pomodoroStatus');
+import Pomodoro = require("./pomodoro");
+import PomodoroStatus = require("./pomodoroStatus");
 
 class PomodoroManager {
 	// logic properties
@@ -15,13 +15,15 @@ class PomodoroManager {
 	public get currentState() {
 		switch (this.currentPomodoro.status) {
 			case PomodoroStatus.Work:
-				return ' - work';
+				return " - work";
 			case PomodoroStatus.Rest:
-				return ' - rest';
+				return " - rest";
 			case PomodoroStatus.Paused:
-				return ' - paused';
+				return " - paused";
+			case PomodoroStatus.Break:
+					return " - break";
 			default:
-				return '';
+				return "";
 		}
 	}
 
@@ -42,15 +44,15 @@ class PomodoroManager {
 		}
 		if (!this._statusBarStartButton) {
 			this._statusBarStartButton = window.createStatusBarItem(StatusBarAlignment.Left);
-			this._statusBarStartButton.text = '$(triangle-right)';
-			this._statusBarStartButton.command = 'extension.startPomodoro';
-			this._statusBarStartButton.tooltip = 'Start Pomodoro';
+			this._statusBarStartButton.text = "$(triangle-right)";
+			this._statusBarStartButton.command = "extension.startPomodoro";
+			this._statusBarStartButton.tooltip = "Start Pomodoro";
 		}
 		if (!this._statusBarPauseButton) {
 			this._statusBarPauseButton = window.createStatusBarItem(StatusBarAlignment.Left);
-			this._statusBarPauseButton.text = '$(primitive-square)';
-			this._statusBarPauseButton.command = 'extension.pausePomodoro';
-			this._statusBarPauseButton.tooltip = 'Pause Pomodoro';
+			this._statusBarPauseButton.text = "$(primitive-square)";
+			this._statusBarPauseButton.command = "extension.pausePomodoro";
+			this._statusBarPauseButton.tooltip = "Pause Pomodoro";
 		}
 
 		this.reset();
@@ -72,13 +74,13 @@ class PomodoroManager {
 	private draw() {
 		if (this.isSessionFinished) {
 			// show text when all Pomodoro sessions are over
-			this._statusBarText.text = 'Restart session?';
+			this._statusBarText.text = "Restart session?";
 			this._statusBarStartButton.show();
 			this._statusBarPauseButton.hide();
 
 			// show message if user needs a longer break
 			if (this.pomodori.length > 1) {
-				window.showInformationMessage('Well done! You should now take a longer break.');
+				window.showInformationMessage("Well done! You should now take a longer break.");
 			}
 
 			return;
@@ -88,17 +90,17 @@ class PomodoroManager {
 		const minutes = (this.currentPomodoro.timer.currentTime - seconds) / 60;
 
 		// update status bar (text)
-		const timerPart = ((minutes < 10) ? '0' : '') + minutes + ':' + ((seconds < 10) ? '0' : '') + seconds;
+		const timerPart = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds < 10) ? "0" : "") + seconds;
 
-		let pomodoroNumberPart = '';
+		let pomodoroNumberPart = "";
 		if (this.pomodori.length > 1) {
-			pomodoroNumberPart += ' (' + (this._pomodoroIndex + 1) + ' out of ' + this.pomodori.length + ' pomodori)';
+			pomodoroNumberPart += " (" + (this._pomodoroIndex + 1) + " out of " + this.pomodori.length + " pomodori)";
 		}
 
 		this._statusBarText.text = timerPart + this.currentState + pomodoroNumberPart;
 
-		if (this.currentPomodoro.status == PomodoroStatus.None ||
-			this.currentPomodoro.status == PomodoroStatus.Paused) {
+		if (this.currentPomodoro.status === PomodoroStatus.None ||
+			this.currentPomodoro.status === PomodoroStatus.Paused) {
 			this._statusBarStartButton.show();
 			this._statusBarPauseButton.hide();
 		}
@@ -149,4 +151,4 @@ class PomodoroManager {
 	}
 }
 
-export = PomodoroManager
+export = PomodoroManager;

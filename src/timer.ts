@@ -21,7 +21,7 @@ class Timer {
 			}, this.interval);
 		}
 		else {
-			console.error('A timer instance is already running...');
+			console.error("A timer instance is already running...");
 		}
 	}
 
@@ -38,4 +38,4 @@ class Timer {
 	}
 }
 
-export = Timer
+export = Timer;

@@ -1,22 +1,22 @@
-'use strict';
+"use strict";
 
-import * as vscode from 'vscode';
-import PomodoroManager = require('./pomodoroManager');
+import * as vscode from "vscode";
+import PomodoroManager = require("./pomodoroManager");
 
 export function activate(context: vscode.ExtensionContext) {
-	const config = vscode.workspace.getConfiguration('pomodoro');
-	let pomodoroManager = new PomodoroManager(config.workTime, config.pauseTime);
+	const config = vscode.workspace.getConfiguration("pomodoro");
+	const pomodoroManager = new PomodoroManager(config.workTime, config.pauseTime);
 
 	// list of commands
-	const startDisposable = vscode.commands.registerCommand('extension.startPomodoro', () => {
+	const startDisposable = vscode.commands.registerCommand("extension.startPomodoro", () => {
 		pomodoroManager.start();
 	});
 
-	const stopDisposable = vscode.commands.registerCommand('extension.pausePomodoro', () => {
+	const stopDisposable = vscode.commands.registerCommand("extension.pausePomodoro", () => {
 		pomodoroManager.pause();
 	});
 
-	const resetDisposable = vscode.commands.registerCommand('extension.resetPomodoro', () => {
+	const resetDisposable = vscode.commands.registerCommand("extension.resetPomodoro", () => {
 		pomodoroManager.reset();
 	});
 
@@ -25,5 +25,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
+// tslint:disable-next-line:no-empty
 export function deactivate() {
 }
