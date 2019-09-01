@@ -1,5 +1,5 @@
 {
-	"extends": ["tslint:recommended", "tslint-sonarts"],
+	"extends": ["tslint:recommended"],
 	"rules": {
 		"indent": [true, "tabs", 4],
 		"trailing-comma": [true, {"multiline": "never", "singleline": "never"}],

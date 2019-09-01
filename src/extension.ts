@@ -1,7 +1,5 @@
-"use strict";
-
 import * as vscode from "vscode";
-import PomodoroManager = require("./pomodoroManager");
+import PomodoroManager from "./pomodoroManager";
 
 export function activate(context: vscode.ExtensionContext) {
 	const config = vscode.workspace.getConfiguration("pomodoro");
@@ -24,7 +22,6 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(pomodoroManager, startDisposable, stopDisposable, resetDisposable);
 }
 
-// this method is called when your extension is deactivated
-// tslint:disable-next-line:no-empty
 export function deactivate() {
+	console.log("pomodoro deactivate");
 }

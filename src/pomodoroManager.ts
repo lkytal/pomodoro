@@ -1,7 +1,7 @@
 import { StatusBarAlignment, StatusBarItem, window } from "vscode";
 
-import Pomodoro = require("./pomodoro");
-import PomodoroStatus = require("./pomodoroStatus");
+import Pomodoro from "./pomodoro";
+import PomodoroStatus from "./pomodoroStatus";
 
 class PomodoroManager {
 	// logic properties
@@ -151,4 +151,4 @@ class PomodoroManager {
 	}
 }
 
-export = PomodoroManager;
+export default PomodoroManager;

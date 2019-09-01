@@ -7,4 +7,4 @@ enum PomodoroStatus {
 	Done
 }
 
-export = PomodoroStatus;
+export default PomodoroStatus;

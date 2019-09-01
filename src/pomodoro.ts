@@ -1,7 +1,7 @@
 import { window } from "vscode";
 
-import PomodoroStatus = require("./pomodoroStatus");
-import Timer = require("./timer");
+import PomodoroStatus from "./pomodoroStatus";
+import Timer from "./timer";
 
 class Pomodoro {
 	// properties
@@ -99,4 +99,4 @@ class Pomodoro {
 	}
 }
 
-export = Pomodoro;
+export default Pomodoro;

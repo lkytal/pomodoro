@@ -2,7 +2,7 @@
 	"name": "pomodoro",
 	"displayName": "Pomodoro Timer",
 	"description": "Pomodoro Timer for vscode",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"publisher": "lkytal",
 	"license": "BY-NC-SA",
 	"engines": {
@@ -69,10 +69,10 @@
 		"test": "node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"@types/mocha": "^5.2.5",
-		"@types/node": "^10.5.5",
-		"mocha": "^5.2.0",
-		"typescript": "^3.0.1",
-		"vscode": "^1.1.18"
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.7.3",
+		"mocha": "^6.2.0",
+		"typescript": "^3.6.2",
+		"vscode": "^1.1.36"
 	}
 }
