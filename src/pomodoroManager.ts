@@ -32,27 +32,14 @@ class PomodoroManager {
 	}
 
 	// UI properties
-	private _statusBarText: StatusBarItem;
-	private _statusBarStartButton: StatusBarItem;
-	private _statusBarPauseButton: StatusBarItem;
+	private _statusBarItem: StatusBarItem;
 
 	constructor(public workTime: number = 25, public pauseTime: number = 5) {
-		// create status bar items
-		if (!this._statusBarText) {
-			this._statusBarText = window.createStatusBarItem(StatusBarAlignment.Left);
-			this._statusBarText.show();
-		}
-		if (!this._statusBarStartButton) {
-			this._statusBarStartButton = window.createStatusBarItem(StatusBarAlignment.Left);
-			this._statusBarStartButton.text = "$(triangle-right)";
-			this._statusBarStartButton.command = "extension.startPomodoro";
-			this._statusBarStartButton.tooltip = "Start Pomodoro";
-		}
-		if (!this._statusBarPauseButton) {
-			this._statusBarPauseButton = window.createStatusBarItem(StatusBarAlignment.Left);
-			this._statusBarPauseButton.text = "$(primitive-square)";
-			this._statusBarPauseButton.command = "extension.pausePomodoro";
-			this._statusBarPauseButton.tooltip = "Pause Pomodoro";
+		// create status bar item
+		if (!this._statusBarItem) {
+			this._statusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
+			this._statusBarItem.command = "extension.togglePomodoro"; // Set the command for the single item
+			this._statusBarItem.show();
 		}
 
 		this.reset();
@@ -74,9 +61,9 @@ class PomodoroManager {
 	private draw() {
 		if (this.isSessionFinished) {
 			// show text when all Pomodoro sessions are over
-			this._statusBarText.text = "Restart session?";
-			this._statusBarStartButton.show();
-			this._statusBarPauseButton.hide();
+			this._statusBarItem.text = "Restart session?";
+			this._statusBarItem.tooltip = "Start a new Pomodoro session"; // Update tooltip
+			this._statusBarItem.show();
 
 			// show message if user needs a longer break
 			if (this.pomodori.length > 1) {
@@ -97,19 +84,35 @@ class PomodoroManager {
 			pomodoroNumberPart += " (" + (this._pomodoroIndex + 1) + " out of " + this.pomodori.length + " pomodori)";
 		}
 
-		this._statusBarText.text = timerPart + this.currentState + pomodoroNumberPart;
-
-		if (this.currentPomodoro.status === PomodoroStatus.None ||
-			this.currentPomodoro.status === PomodoroStatus.Paused) {
-			this._statusBarStartButton.show();
-			this._statusBarPauseButton.hide();
+		let icon = "";
+		let tooltip = "";
+		switch (this.currentPomodoro.status) {
+			case PomodoroStatus.Work:
+				icon = "$(primitive-square)"; // Pause icon
+				tooltip = "Pause Pomodoro";
+				break;
+			case PomodoroStatus.Rest:
+				icon = "$(primitive-square)"; // Pause icon
+				tooltip = "Pause Pomodoro";
+				break;
+			case PomodoroStatus.Paused:
+				icon = "$(triangle-right)"; // Start icon
+				tooltip = "Start Pomodoro";
+				break;
+			case PomodoroStatus.Break:
+				icon = "$(primitive-square)"; // Pause icon
+				tooltip = "Pause Pomodoro";
+				break;
+			default:
+				icon = "$(triangle-right)"; // Start icon
+				tooltip = "Start Pomodoro";
+				break;
 		}
-		else {
-			this._statusBarStartButton.hide();
-			this._statusBarPauseButton.show();
-		}
 
-		this._statusBarText.show();
+		this._statusBarItem.text = `${icon} ${timerPart}${this.currentState}${pomodoroNumberPart}`;
+		this._statusBarItem.tooltip = tooltip;
+
+		this._statusBarItem.show();
 	}
 
 	// public methods
@@ -124,6 +127,7 @@ class PomodoroManager {
 			this.update();
 			this.draw();
 		};
+		this.draw(); // Initial draw to update the UI immediately
 	}
 
 	public pause() {
@@ -138,16 +142,25 @@ class PomodoroManager {
 		this.pomodori = [];
 
 		this.pomodori.push(new Pomodoro(this.workTime * 60, this.pauseTime * 60));
+		this.draw(); // Draw after reset
+	}
+
+	public toggle() {
+		if (this.isSessionFinished || this.currentPomodoro.status === PomodoroStatus.None || this.currentPomodoro.status === PomodoroStatus.Paused) {
+			this.start();
+		} else {
+			this.pause();
+		}
 	}
 
 	public dispose() {
 		// stop current Pomodoro
-		this.currentPomodoro.dispose();
+		if (this.currentPomodoro) {
+			this.currentPomodoro.dispose();
+		}
 
 		// reset UI
-		this._statusBarText.dispose();
-		this._statusBarStartButton.dispose();
-		this._statusBarPauseButton.dispose();
+		this._statusBarItem.dispose();
 	}
 }
 
