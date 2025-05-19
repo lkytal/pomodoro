@@ -2,6 +2,9 @@
 
 ## Release Notes
 
+## [2.0.0] - 2025-05-19
+- Using single botton.
+
 ## [1.0.2] - 2017-03-23
 - Ensure time in integer.
 
