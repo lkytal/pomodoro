@@ -2,7 +2,7 @@
 	"name": "pomodoro",
 	"displayName": "Pomodoro Timer",
 	"description": "Pomodoro Timer for vscode",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"publisher": "lkytal",
 	"license": "BY-NC-SA",
 	"engines": {

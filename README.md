@@ -1,8 +1,7 @@
 # Pomodoro Timer for VS Code
 
-[![Dependency status](https://david-dm.org/lkytal/pomodoro.svg)](https://david-dm.org/lkytal/pomodoro.svg)
-<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro"><img src="https://vsmarketplacebadge.apphb.com/version/lkytal.pomodoro.svg" alt="Installs"></a>
-<a href="https://marketplace.visualstudio.com/items?itemName=lkytal.FlpomodoroatUI"><img src="https://vsmarketplacebadge.apphb.com/installs/lkytal.pomodoro.svg" alt="Installs"></a>
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/lkytal.pomodoro)](https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/lkytal.pomodoro)](https://marketplace.visualstudio.com/items?itemName=lkytal.pomodoro)
 
 A simple Pomodoro timer shows in the status bar.
 
