@@ -1,5 +1,5 @@
 class Timer {
-	private _timerId: NodeJS.Timer;
+	private _timerId: NodeJS.Timeout;
 	public get isRunning() {
 		return this._timerId != null;
 	}
@@ -17,7 +17,10 @@ class Timer {
 		if (this._timerId == null) {
 			this._timerId = setInterval(() => {
 				this.tick();
-				callback();
+				callback(); // 每次 tick 都调用回调函数
+				if (this.currentTime <= 0) {
+					this.stop();
+				}
 			}, this.interval);
 		}
 		else {
