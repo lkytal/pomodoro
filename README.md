@@ -24,9 +24,13 @@ After started:
 
 ## Release Notes
 
-### [1.0.2] - 2017-03-23
+### [2.1.0] - 2025-05-19
 
-- Ensure time in integer.
+- Show notification and/or sound when timer ends.
+
+### [2.0.0] - 2025-05-18
+
+- Using single botton instead.
 
 ### [1.0.1] - 2017-03-15
 

@@ -1,4 +1,6 @@
-import { window } from "vscode";
+import * as vscode from "vscode";
+import { window, workspace } from "vscode";
+import * as sound from 'play-sound';
 
 import PomodoroStatus from "./pomodoroStatus";
 import Timer from "./timer";
@@ -6,6 +8,8 @@ import Timer from "./timer";
 class Pomodoro {
 	// properties
 	private _status: PomodoroStatus;
+	private _previousStatus: PomodoroStatus;
+	private _soundPath: string;
 
 	public get status() {
 		return this._status;
@@ -24,11 +28,12 @@ class Pomodoro {
 	public onTick: () => void;
 
 	constructor(public workTime: number = 25 * 60, public pauseTime: number = 5 * 60) {
-		this.workTime = Math.floor(this.workTime);
+		this.workTime = 5;  //Math.floor(this.workTime);
 		this.pauseTime = Math.floor(this.pauseTime);
 
 		this._timer = new Timer();
 		this.status = PomodoroStatus.None;
+		// this._soundPath = vscode.Uri.joinPath(extensionUri, 'media', 'notify.mp3').fsPath;
 	}
 
 	// private methods
@@ -46,8 +51,23 @@ class Pomodoro {
 		}
 	}
 
+	private playSound() {
+		// sound.play(this._soundPath, (err) => {
+		// 	if (err) {
+		// 		console.error("Error playing sound:", err);
+		// 	}
+		// });
+	}
+
 	// public methods
-	public start(status: PomodoroStatus = PomodoroStatus.Work) {
+	public start(status: PomodoroStatus = null) {
+		if (status === null && this.status === PomodoroStatus.Paused && this._previousStatus) {
+			status = this._previousStatus;
+		}
+		else if (status === null) {
+			status = PomodoroStatus.Work;
+		}
+
 		if (status === PomodoroStatus.Work || status === PomodoroStatus.Rest) {
 			if (this.status !== PomodoroStatus.Paused) {
 				this.resetTimer(status);
@@ -59,7 +79,15 @@ class Pomodoro {
 				// stop the timer if no second left
 				if (this.timer.currentTime <= 0) {
 					if (this.status === PomodoroStatus.Work) {
-						window.showInformationMessage("Work done! Take a break.");
+						const config = workspace.getConfiguration("pomodoro");
+						if (config.playSound) {
+							this.playSound();
+						}
+
+						if (config.showNotification) {
+							window.showInformationMessage("Work done! Take a break.");
+						}
+
 						this.start(PomodoroStatus.Rest);
 					}
 					else if (this.status === PomodoroStatus.Rest) {
@@ -80,6 +108,7 @@ class Pomodoro {
 
 	public pause() {
 		this.stop();
+		this._previousStatus = this.status;
 		this.status = PomodoroStatus.Paused;
 	}
 
